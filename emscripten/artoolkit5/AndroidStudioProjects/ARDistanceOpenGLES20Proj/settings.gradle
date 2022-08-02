@@ -1,3 +1,0 @@
-include ':aRDistanceOpenGLES20', 'aRBaseLib'
-
-project(':aRBaseLib').projectDir = new File('../ARBaseLibProj/aRBaseLib')

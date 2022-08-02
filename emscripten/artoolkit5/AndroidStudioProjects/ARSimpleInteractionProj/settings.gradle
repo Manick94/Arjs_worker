@@ -1,4 +1,0 @@
-include ':aRSimpleInteraction'
-include 'aRBaseLib'
-
-project(':aRBaseLib').projectDir = new File('../ARBaseLibProj/aRBaseLib')
