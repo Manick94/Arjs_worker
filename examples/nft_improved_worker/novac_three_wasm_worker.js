@@ -1,3 +1,7 @@
+var model;
+var clock = new THREE.Clock();
+var mixers = [];
+
 function isMobile(){
     return /Android|mobile|iPad|iPhone/i.test(navigator.userAgent);
 }
@@ -223,7 +227,7 @@ function start2(container, marker, video, input_width, input_height, canvas_draw
     }
 
     var tick = function(){
-        drawa();
+        draw();
         requestAnimationFrame(tick);
 
         if(mixers.length > 0){
