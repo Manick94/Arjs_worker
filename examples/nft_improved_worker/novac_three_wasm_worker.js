@@ -25,11 +25,11 @@ var trackedMatrix = {
 }
 
 var markers = {
-    pinball: {
+    arveo_nft: {
         width: 1637,
         height: 2048,
         dpi: 215,
-        url: "../examples/DataNFT/pinball"
+        url: "../examples/DataNFT/arveo_nft/ARveo8"
     }
 };
 
@@ -86,11 +86,15 @@ function start( container, marker, video, input_width, input_height, canvas_draw
     var root = new THREE.Object3D();
     scene.add(root);
 
+    //to add sphere to draw on NFT
+
     sphere.material.flatShading;
     sphere.position.z = 0;
     sphere.position.x = 100;
     sphere.position.y = 100;
     sphere.scale.set(200, 200, 200);
+
+    //************************************ */
 
     root.matrixAutoUpdate = false;
     root.add(sphere);
@@ -98,7 +102,7 @@ function start( container, marker, video, input_width, input_height, canvas_draw
     /* Load Model */
     var threeGLTFLoader = new THREE.GLTFLoader();
 
-    threeGLTFLoader.load("../Data/models/Flamingo.glb", function (gltf) {
+    threeGLTFLoader.load("../Data/models/Horse.glb", function (gltf) {
             model = gltf.scene.children[0];
             model.position.z = 0;
             model.position.x = 100;
@@ -111,7 +115,7 @@ function start( container, marker, video, input_width, input_height, canvas_draw
             action.play();
 
             root.matrixAutoUpdate = false;
-            // root.add(model);
+            root.add(model);
         }
     );
 
