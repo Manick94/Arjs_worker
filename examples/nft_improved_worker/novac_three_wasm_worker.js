@@ -241,7 +241,7 @@ function start2(container, marker, video, input_width, input_height, canvas_draw
         render_update();
         var now = Date.now();
         var dr = now - lasttime;
-        time +- dt;
+        time += dt;
         lasttime = now;
 
         if(!world) {
