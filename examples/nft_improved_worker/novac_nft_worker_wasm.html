@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Novac NFT Worker Wasm sample</title>
+</head>
+<body>
+    <div id = "loading">
+        <img src="../Data/novac_logo.jpg" />
+        <span class="loading-text"> Loading, Please Wait..!</span>
+    </div>
+
+    <!-- 
+        ===========================
+        STATS
+        ===========================
+     -->
+
+     <div id = "stats" class="ui stats">
+         <div id="stats1" class="stats-item">
+             <p class="stats-item-title">
+                 Main
+             </p>
+         </div>
+
+         <div id="stats2" class="stats-item">
+             <p class="stats-item-title">
+                 Worker
+             </p>
+         </div>
+     </div>
+
+     <!-- 
+         =============================
+         Camera Video & Canvas
+         =============================
+      -->
+
+      <div id="app">
+          <video loop autoplay muted playsinline id = "video"></video>
+
+          <canvas id="canvas"></canvas>
+      </div>
+
+      <!-- reference link for opening marker image -->
+      <!-- <a href="" class = "ui marker" target = "_blank">Marker Image</a> -->
+
+      <script src="../js/third_party/three.js/stats.min.js"></script>
+      <script src="../js/third_party/three.js/three.min.js"></script>
+      <script src="../js/third_party/three.js/GLTFLoader.js"></script>
+      <script src="novac_three_wasm_worker.js"></script>
+
+      <script>
+          /**
+           * STATS
+           **/
+          var statsMain = new Stats();
+          statsMain.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+          document.getElementById("stats1").appendChild(statsMain.dom);
+
+          var statsWorker = new Stats();
+          statsWorker.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+          document.getElementById("stats2").appendChild(statsWorker.dom);
+
+          /**
+           * App / Elements
+           */
+          var container = document.getElementById("app");
+          var video = document.getElementById("video");
+          var canvas = document.getElementById("canvas");
+
+          if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+              var hint = {
+                  audio: false,
+                  video: true
+              };
+
+              if(window.innerWidth < 800) {
+                  hint = {
+                      audio: false,
+                      video: {
+                          width: { ideal: 400 },
+                          height: { ideal: 640 },
+                          facingMode:
+                          {
+                              exact: "environment"
+                          }
+                      },
+                  };
+              }
+              navigator.mediaDevices.getUserMedia(hint).then(function(stream){
+                video.srcObject = stream;
+                video.addEventListener("loadedmetadata", function(){
+                    video.play();
+
+                    start(
+                        container,
+                        markers["ARveo8"],
+                        video,
+                        video.videoWidth,
+                        video.videoHeight,
+                        canvas,
+                        function(){
+                            statsMain.update();
+                        },
+                        function () {
+                            statsWorker.update();
+                        },
+                        null
+                    );
+                });
+              });
+          }
+      </script>
+</body>
+</html>

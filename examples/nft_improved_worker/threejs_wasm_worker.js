@@ -71,6 +71,9 @@ function start2(container, marker, video, input_width, input_height, canvas_draw
 
     scene.add(camera);
 
+
+    //Initializing a sphere to draw on a nft marker
+
     var sphere = new THREE.Mesh(
         new THREE.SphereGeometry(0.5, 8, 8),
         new THREE.MeshNormalMaterial()
@@ -87,6 +90,9 @@ function start2(container, marker, video, input_width, input_height, canvas_draw
 
     root.matrixAutoUpdate = false;
     root.add(sphere);
+
+
+    
 
     var load = function() {
         vw = input_width;
