@@ -25,7 +25,7 @@ var trackedMatrix = {
 //declaring markers for NFT tracking
 
 var markers = {
-    "arveo_nft": {
+    arveo_nft: {
         width: 1637,
         height: 2048,
         dpi: 250,
