@@ -86,6 +86,15 @@ function start( container, marker, video, input_width, input_height, canvas_draw
     var root = new THREE.Object3D();
     scene.add(root);
 
+    sphere.material.flatShading;
+    sphere.position.z = 0;
+    sphere.position.x = 100;
+    sphere.position.y = 100;
+    sphere.scale.set(200, 200, 200);
+
+    root.matrixAutoUpdate = false;
+    root.add(sphere);
+
     /* Load Model */
     var threeGLTFLoader = new THREE.GLTFLoader();
 
