@@ -240,7 +240,7 @@ function start2(container, marker, video, input_width, input_height, canvas_draw
     var draw = function() {
         render_update();
         var now = Date.now();
-        var dr = now - lasttime;
+        var dt = now - lasttime;
         time += dt;
         lasttime = now;
 
