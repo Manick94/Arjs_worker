@@ -88,11 +88,11 @@ function start( container, marker, video, input_width, input_height, canvas_draw
 
     //to add sphere to draw on NFT
 
-    sphere.material.flatShading;
-    sphere.position.z = 0;
-    sphere.position.x = 100;
-    sphere.position.y = 100;
-    sphere.scale.set(200, 200, 200);
+    // sphere.material.flatShading;
+    // sphere.position.z = 0;
+    // sphere.position.x = 100;
+    // sphere.position.y = 100;    
+    // sphere.scale.set(200, 200, 200);
 
     //************************************ */
 
@@ -102,7 +102,7 @@ function start( container, marker, video, input_width, input_height, canvas_draw
     /* Load Model */
     var threeGLTFLoader = new THREE.GLTFLoader();
 
-    threeGLTFLoader.load("../Data/models/Horse.glb", function (gltf) {
+    threeGLTFLoader.load("../Data/models/logo.glb", function (gltf) {
             model = gltf.scene.children[0];
             model.position.z = 0;
             model.position.x = 100;
