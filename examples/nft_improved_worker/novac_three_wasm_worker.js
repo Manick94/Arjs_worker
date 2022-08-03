@@ -93,7 +93,7 @@ function start( container, marker, video, input_width, input_height, canvas_draw
     sphere.scale.set(200, 200, 200);
 
     root.matrixAutoUpdate = false;
-    root.add(sphere);
+    // root.add(sphere);
 
     /* Load Model */
     var threeGLTFLoader = new THREE.GLTFLoader();
@@ -114,6 +114,10 @@ function start( container, marker, video, input_width, input_height, canvas_draw
             root.add(model);
         }
     );
+
+    root.add(threeGLTFLoader);
+    threeGLTFLoader.scale.set(200, 200, 200);
+
 
     var load = function() {
         vw = input_width;
