@@ -1,3 +1,4 @@
+
 var model;
 var clock = new THREE.Clock();
 var mixers = [];
@@ -25,12 +26,6 @@ var trackedMatrix = {
 }
 
 var markers = {
-    arveo_nft: {
-        width: 826,
-        height: 1102,
-        dpi: 100,
-        url: "../examples/DataNFT/arveo_nft/ARveo8"
-    },
     logo_nft: {
         width: 826,
         height: 1102,
@@ -108,19 +103,19 @@ function start( container, marker, video, input_width, input_height, canvas_draw
     /* Load Model */
     var threeGLTFLoader = new THREE.GLTFLoader();
 
-    threeGLTFLoader.load("../Data/models/AR800_v2.glb", function (gltf) {
+    threeGLTFLoader.load("../Data/models/logov2.glb", function (gltf) {
             model = gltf.scene.children[0];
             model.position.z = 0;
             model.position.x = 100;
             model.position.y = 100;
 
-            model.scale.set(5, 5, 5);
+            // model.scale.set(5, 5, 5);
 
-            // var animation = gltf.animations[0];
-            // var mixer = new THREE.AnimationMixer(model);
-            // mixers.push(mixer);
-            // var action = mixer.clipAction(animation);
-            // action.play();
+            var animation = gltf.animations[0];
+            var mixer = new THREE.AnimationMixer(model);
+            mixers.push(mixer);
+            var action = mixer.clipAction(animation);
+            action.play();
 
             root.matrixAutoUpdate = false;
             root.add(model);
@@ -246,11 +241,11 @@ function start( container, marker, video, input_width, input_height, canvas_draw
         draw();
         requestAnimationFrame(tick);
 
-        // if (mixers.length > 0) {
-        //     for (var i = 0; i < mixers.length; i++) {
-        //         mixers[i].update(clock.getDelta());
-        //     }
-        // }
+        if (mixers.length > 0) {
+            for (var i = 0; i < mixers.length; i++) {
+                mixers[i].update(clock.getDelta());
+            }
+        }
     };
 
     var draw = function() {
