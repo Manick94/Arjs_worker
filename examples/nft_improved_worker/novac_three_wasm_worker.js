@@ -110,11 +110,11 @@ function start( container, marker, video, input_width, input_height, canvas_draw
 
             // model.scale.set(5, 5, 5);
 
-            var animation = gltf.animations[0];
-            var mixer = new THREE.AnimationMixer(model);
-            mixers.push(mixer);
-            var action = mixer.clipAction(animation);
-            action.play();
+            // var animation = gltf.animations[0];
+            // var mixer = new THREE.AnimationMixer(model);
+            // mixers.push(mixer);
+            // var action = mixer.clipAction(animation);
+            // action.play();
 
             root.matrixAutoUpdate = false;
             root.add(model);
@@ -240,11 +240,11 @@ function start( container, marker, video, input_width, input_height, canvas_draw
         draw();
         requestAnimationFrame(tick);
 
-        if (mixers.length > 0) {
-            for (var i = 0; i < mixers.length; i++) {
-                mixers[i].update(clock.getDelta());
-            }
-        }
+        // if (mixers.length > 0) {
+        //     for (var i = 0; i < mixers.length; i++) {
+        //         mixers[i].update(clock.getDelta());
+        //     }
+        // }
     };
 
     var draw = function() {
