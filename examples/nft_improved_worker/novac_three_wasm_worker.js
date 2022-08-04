@@ -26,9 +26,9 @@ var trackedMatrix = {
 
 var markers = {
     arveo_nft: {
-        width: 1637,
-        height: 2048,
-        dpi: 215,
+        width: 826,
+        height: 1102,
+        dpi: 100,
         url: "../examples/DataNFT/arveo_nft/ARveo8"
     }
 };
