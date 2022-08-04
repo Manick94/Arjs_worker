@@ -102,20 +102,24 @@ function start( container, marker, video, input_width, input_height, canvas_draw
     /* Load Model */
     var threeGLTFLoader = new THREE.GLTFLoader();
 
-    threeGLTFLoader.load("../Data/models/logo.glb", function (gltf) {
+    threeGLTFLoader.load("../Data/models/AR800.glb", function (gltf) {
             model = gltf.scene.children[0];
             model.position.z = 0;
             model.position.x = 100;
             model.position.y = 100;
 
-            var animation = gltf.animations[0];
-            var mixer = new THREE.AnimationMixer(model);
-            mixers.push(mixer);
-            var action = mixer.clipAction(animation);
-            action.play();
+            model.scale.set(300, 300, 300);
+            // var animation = gltf.animations[0];
+            // var mixer = new THREE.AnimationMixer(model);
+            // mixers.push(mixer);
+            // var action = mixer.clipAction(animation);
+            // action.play();
 
             root.matrixAutoUpdate = false;
             root.add(model);
+            //Debug for model loading 
+            console.log(root);
+            console.log(model);
         }
     );
 
@@ -232,13 +236,13 @@ function start( container, marker, video, input_width, input_height, canvas_draw
 
     var tick = function() {
         draw();
-        requestAnimationFrame(tick);
+        // requestAnimationFrame(tick);
 
-        if (mixers.length > 0) {
-            for (var i = 0; i < mixers.length; i++) {
-                mixers[i].update(clock.getDelta());
-            }
-        }
+        // if (mixers.length > 0) {
+        //     for (var i = 0; i < mixers.length; i++) {
+        //         mixers[i].update(clock.getDelta());
+        //     }
+        // }
     };
 
     var draw = function() {
