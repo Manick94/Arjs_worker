@@ -108,7 +108,8 @@ function start( container, marker, video, input_width, input_height, canvas_draw
             model.position.x = 100;
             model.position.y = 100;
 
-            model.scale.set(300, 300, 300);
+            // model.scale.set(300, 300, 300);
+
             var animation = gltf.animations[0];
             var mixer = new THREE.AnimationMixer(model);
             mixers.push(mixer);
@@ -120,6 +121,7 @@ function start( container, marker, video, input_width, input_height, canvas_draw
             //Debug for model loading 
             console.log(root);
             console.log(model);
+            console.log("Flamingo model loaded");
         }
     );
 
